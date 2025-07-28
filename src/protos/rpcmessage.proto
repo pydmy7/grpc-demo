@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package rpcmessage;
+
+service RpcService {
+    rpc SingleResponse (GuiMessage) returns (GuiMessage);
+}
+
+message GuiMessage {
+    oneof GuiMessageWrapper {
+        CutPosition cutPosition = 1;
+    }
+}
+
+message CutPosition {
+    int32 pos = 1;
+}
