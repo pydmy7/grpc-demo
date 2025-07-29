@@ -19,9 +19,11 @@ public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
+    void setCutPosition(int pos);
+
 private:
     Ui::Widget *ui;
 
-    std::unique_ptr<MyClient> myclient_;
+    std::unique_ptr<MyClient> myClient_;
 };
 #endif // WIDGET_H

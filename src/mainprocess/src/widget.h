@@ -9,6 +9,8 @@ class Widget;
 }
 QT_END_NAMESPACE
 
+class MyClient;
+
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -21,5 +23,7 @@ public:
 
 private:
     Ui::Widget *ui;
+
+    std::unique_ptr<MyClient> myClient_;
 };
 #endif // WIDGET_H

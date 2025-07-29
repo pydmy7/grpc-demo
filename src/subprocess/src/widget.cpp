@@ -9,14 +9,18 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
-    myclient_ = std::make_unique<MyClient>(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+    myClient_ = std::make_unique<MyClient>(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
 
     connect(ui->horizontalSlider, &QSlider::valueChanged, this, [this](int value) {
-        myclient_->cutPositionChanged(value);
+        myClient_->cutPositionChanged(value);
     });
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::setCutPosition(int pos) {
+    ui->horizontalSlider->setValue(pos);
 }
